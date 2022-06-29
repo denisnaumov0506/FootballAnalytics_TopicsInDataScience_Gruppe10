@@ -306,7 +306,7 @@ get_all_players_of_club = function(club_id, season) {
   }
   
   html_ %>%
-    html_elements(' .items tbody [class="rechts hauptlink"]') -> marktwerte_html
+    html_elements('.items tbody [class="rechts hauptlink"]') -> marktwerte_html
   
   print(html_elements(marktwerte_html[[11]], 'a') %>% html_text())
   marktwerte = c()
@@ -340,7 +340,7 @@ get_all_players_of_club = function(club_id, season) {
   list_player
 }
 
-fc_bayern_munchen = get_all_players_of_club(27, 2018)
+fc_bayern_munchen = get_all_players_of_club(15, 2021)
 df_fc_bayern_player = data.frame(
   rueckennummer=fc_bayern_munchen[[1]],
   name=fc_bayern_munchen[[2]],
@@ -351,6 +351,8 @@ df_fc_bayern_player = data.frame(
   marktwerte=fc_bayern_munchen[[8]]
   )
 df_fc_bayern_player
+
+write_csv(df_fc_bayern_player, file='fc_bayern_munchen_players.csv')
 
 eintracht_frankfurt = get_all_players_of_club(15, 2021)
 df_eintracht_frankfurt_player = data.frame(
@@ -363,6 +365,8 @@ df_eintracht_frankfurt_player = data.frame(
   marktwerte=eintracht_frankfurt[[8]]
 )
 df_eintracht_frankfurt_player
+
+# test/test
 
 
 
